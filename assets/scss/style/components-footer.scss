@@ -1,4 +1,26 @@
-/* ––––––––––BASIC ELEMENTS–––––––––– */
+@use "settings-variables" as *;
+/* ––––––––––FOOTER–––––––––– */
+footer.footer {
+  background-color: $color-surface-secondary;
+  color: $color-on-surface-secondary;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+
+  border-top: $color-border-primary 0.125rem solid;
+
+  span,
+  p {
+    @include font-style(l);
+  }
+
+  p {
+    display: block;
+    text-align: right;
+    width: 100%;
+  }
+}
 
 /* –––––––––––––––––––––––––––––– TABLET –––––––––––––––––––––––––––––– */
 @media only screen and (min-width: $breakpoint-tablet) {

@@ -1,18 +1,204 @@
+@use "sass:map";
+
 /* ––––––––––VARS–––––––––– */
-$color-black: #000000;
-$color-beige: #eae3d2;
-$color-beige-soft: #f1ede2;
-$color-lila: #a6a8d5;
-$color-lila-soft: #cacbe6;
-$color-yellow: #ffefaf;
-$color-white: #ffffff;
-$color-white-hover: #fafafa;
-$color-white-active: #ffffff;
-$radius-small: 12px;
-$radius-medium: 24px;
-$radius-large: 32px;
+// #849496 / #174042 / #ffed00 Original Colors
+
+/* ––––––––––CORE–––––––––– */
+// Mono Scale
+$color-monochrome-900: #000000;
+$color-monochrome-800: #212526;
+$color-monochrome-700: #424a4b;
+$color-monochrome-600: #636f71;
+$color-monochrome-500-P: #849496;
+$color-monochrome-400: #9caaab;
+$color-monochrome-300: #b5bfc0;
+$color-monochrome-200: #cdd5d5;
+$color-monochrome-100: #e6eaea;
+$color-monochrome-050: #ffffff;
+
+// Green Scale
+$color-green-900: #0a0d23;
+$color-green-800: #0e1a2d;
+$color-green-700: #122c38;
+$color-green-600-P: #174042;
+$color-green-500: #355c56;
+$color-green-400: #54766b;
+$color-green-300: #738f80;
+$color-green-200: #91a898;
+$color-green-100: #b1c1b2;
+$color-green-050: #d1dad0;
+
+// Yellow Scale
+$color-yellow-900: #4d3d00;
+$color-yellow-800: #705d00;
+$color-yellow-700: #947f00;
+$color-yellow-600: #b8a200;
+$color-yellow-500: #dbc700;
+$color-yellow-400-P: #ffed00;
+$color-yellow-300: #fff52d;
+$color-yellow-200: #fffa59;
+$color-yellow-100: #fffe86;
+$color-yellow-050: #ffffb3;
+
+/* ––––––––––BEAKPOINTS–––––––––– */
+$breakpoint-tablet: 48rem;
+$breakpoint-desktop: 64rem;
+$breakpoint-desktop-l: 90rem;
+
+$breakpoints: (
+  tablet: $breakpoint-tablet,
+  desktop: $breakpoint-desktop,
+  desktop-l: $breakpoint-desktop-l,
+);
+
+/* ––––––––––FUNCTIONAL–––––––––– */
+$color-surface-primary: $color-monochrome-500-P;
+$color-surface-secondary: $color-monochrome-050;
+
+$color-on-surface-primary: $color-yellow-400-P;
+$color-on-surface-primary-hover: $color-yellow-300;
+$color-on-surface-primary-focus: $color-yellow-300;
+
+$color-on-surface-secondary: $color-green-600-P;
+$color-on-surface-secondary-hover: $color-green-500;
+$color-on-surface-secondary-focus: $color-green-500;
+
+$color-border-primary: $color-green-600-P;
+
+/* ––––––––––Typography–––––––––– */
+$font-styles: (
+  4xl: (
+    font-size: (
+      tablet: 3rem,
+      desktop: 4.25rem,
+      desktop-l: 4.25rem,
+    ),
+    line-height: (
+      tablet: 1,
+      desktop: 1,
+      desktop-l: 1,
+    ),
+  ),
+  3xl: (
+    font-size: (
+      tablet: 2.5rem,
+      desktop: 3.375rem,
+      desktop-l: 3.375rem,
+    ),
+    line-height: (
+      tablet: 1,
+      desktop: 1,
+      desktop-l: 1,
+    ),
+  ),
+  2xl: (
+    font-size: (
+      tablet: 2rem,
+      desktop: 2.75rem,
+      desktop-l: 2.75rem,
+    ),
+    line-height: (
+      tablet: 1.1,
+      desktop: 1.1,
+      desktop-l: 1.1,
+    ),
+  ),
+  xl: (
+    font-size: (
+      tablet: 1.75rem,
+      desktop: 2.25rem,
+      desktop-l: 2.25rem,
+    ),
+    line-height: (
+      tablet: 1.2,
+      desktop: 1.2,
+      desktop-l: 1.2,
+    ),
+  ),
+  l: (
+    font-size: (
+      tablet: 1.5rem,
+      desktop: 1.75rem,
+      desktop-l: 1.75rem,
+    ),
+    line-height: (
+      tablet: 1.2,
+      desktop: 1.2,
+      desktop-l: 1.2,
+    ),
+  ),
+  m: (
+    font-size: (
+      tablet: 1.25rem,
+      desktop: 1.375rem,
+      desktop-l: 1.375rem,
+    ),
+    line-height: (
+      tablet: 1.4,
+      desktop: 1.4,
+      desktop-l: 1.4,
+    ),
+  ),
+  base: (
+    font-size: (
+      tablet: 1rem,
+      desktop: 1.125rem,
+      desktop-l: 1.125rem,
+    ),
+    line-height: (
+      tablet: 1.5,
+      desktop: 1.5,
+      desktop-l: 1.5,
+    ),
+  ),
+  xs: (
+    font-size: (
+      tablet: 0.875rem,
+      desktop: 1rem,
+      desktop-l: 1rem,
+    ),
+    line-height: (
+      tablet: 1.5,
+      desktop: 1.5,
+      desktop-l: 1.5,
+    ),
+  ),
+  xxs: (
+    font-size: (
+      tablet: 0.75rem,
+      desktop: 0.875rem,
+      desktop-l: 0.875rem,
+    ),
+    line-height: (
+      tablet: 1.5,
+      desktop: 1.5,
+      desktop-l: 1.5,
+    ),
+  ),
+);
+
+@mixin font-style($style-name) {
+  @if map.has-key($font-styles, $style-name) {
+    $style: map.get($font-styles, $style-name);
+
+    // Standardwerte (kleinste Ansicht)
+    font-size: map.get(map.get($style, "font-size"), "tablet");
+    line-height: map.get(map.get($style, "line-height"), "tablet");
+
+    // Responsive Anpassungen
+    @each $breakpoint, $width in $breakpoints {
+      @if map.has-key(map.get($style, "font-size"), $breakpoint) {
+        @media (min-width: $width) {
+          font-size: map.get(map.get($style, "font-size"), $breakpoint);
+          line-height: map.get(map.get($style, "line-height"), $breakpoint);
+        }
+      }
+    }
+  } @else {
+    @error "Font style `#{$style-name}` not found in $font-styles.";
+  }
+}
+
+/* ––––––––––ANIMATION–––––––––– */
 $duration-animation: 0.2s;
 $duration-animation-long: 0.3s;
-$breakpoint-tablet: 768px;
-$breakpoint-desktop: 1024px;
-$breakpoint-desktop-l: 1440px;

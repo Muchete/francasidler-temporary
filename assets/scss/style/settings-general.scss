@@ -1,9 +1,17 @@
+@use "settings-variables" as *;
+
 /* –––––––––––––––––––––––––––––– GENERAL –––––––––––––––––––––––––––––– */
 html,
 body {
   height: 100%;
   min-height: 100vh;
   min-height: -webkit-fill-available;
+  background-color: $color-surface-secondary;
+  color: $color-on-surface-secondary;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 img {
@@ -11,8 +19,10 @@ img {
   max-width: 100%;
 }
 
-a {
-  background-color: yellow;
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
 }
 
 /* –––––––––––––––––––––––––––––– TABLET –––––––––––––––––––––––––––––– */
@@ -21,6 +31,9 @@ a {
 
 /* –––––––––––––––––––––––––––––– DESKTOP –––––––––––––––––––––––––––––– */
 @media only screen and (min-width: $breakpoint-desktop) {
+  .wrapper {
+    padding: 2rem;
+  }
 }
 
 /* –––––––––––––––––––––––––––––– DESKTOP L –––––––––––––––––––––––––––––– */

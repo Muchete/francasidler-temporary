@@ -1,19 +1,24 @@
-// @font-face {
-//   font-family: Pitagon;
-//   src: url("fonts/pitagon/PitagonSansText-SemiBold.woff2") format("woff2"),
-//     url("fonts/pitagon/PitagonSansText-SemiBold.ttf") format("truetype"),
-//     url("fonts/pitagon/PitagonSansText-SemiBold.otf") format("opentype");
-//   font-weight: 600;
-//   font-style: normal;
-//   font-display: swap;
-// }
+@font-face {
+  font-family: "GTEesti";
+  src: url("/assets/fonts/gt-eesti/GT-Eesti-Text-Regular.otf")
+    format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
-// @font-face {
-//   font-family: Pitagon;
-//   src: url("fonts/pitagon/PitagonSansText-SemiBoldItalic.woff2") format("woff2"),
-//     url("fonts/pitagon/PitagonSansText-SemiBoldItalic.ttf") format("truetype"),
-//     url("fonts/pitagon/PitagonSansText-SemiBoldItalic.otf") format("opentype");
-//   font-weight: 600;
-//   font-style: italic;
-//   font-display: swap;
-// }
+@font-face {
+  font-family: "GTEesti";
+  src: url("/assets/fonts/gt-eesti/GT-Eesti-Text-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GTEesti";
+  src: url("/assets/fonts/gt-eesti/GT-Eesti-Text-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
